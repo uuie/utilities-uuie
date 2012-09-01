@@ -12,11 +12,9 @@ rm -rf gen
 rm -rf bin
 cp -f AndroidManifest.xml xml.tmp
 
-echo 123123123
 
 cat channel.lst |while read line
 do
-	echo $line
    sed -e 's/INNERTEST/'''$line'''/'  xml.tmp >tmp.xml
    sed -e 's/android:debuggable="true"/android:debuggable="false"/' tmp.xml >AndroidManifest.xml 
    echo "out.release.file.name=$PROJ_NAME-$line-$VERSION_NUMBER-release.apk" >outfile.properties
